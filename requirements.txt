@@ -1,0 +1,18 @@
+# FastAPI & Uvicorn for API deployment
+fastapi
+uvicorn
+
+# Hugging Face Transformers & Tokenizers for NER model
+transformers
+torch
+tokenizers
+
+# gdown for downloading model from Google Drive
+gdown
+
+# Pydantic for request validation in FastAPI
+pydantic
+
+# Additional dependencies (optional but recommended)
+numpy
+scipy
