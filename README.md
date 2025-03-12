@@ -4,7 +4,7 @@
 
 ## Overview
 
-The aim of the project is to implement a Named Entity Recognition (NER) API using a fine-tuned BERT model trained on the CoNLL-2003 dataset. The trained model is integrated into a FastAPI-based REST service that exposes an endpoint /predict that takes input text as JSON and returns the recognized entities. 
+The aim of the project is to implement a Named Entity Recognition (NER) API by fine-tuning a pretrained BERT model trained on the CoNLL-2003 dataset. The trained model is integrated into a FastAPI-based REST service that exposes an endpoint /predict that takes input text as JSON and returns the recognized entities. 
 
 ## Features
 - **Data Preprocessing**: Preprocessed the data in Google Colab, including tokenization, ddataset formatting, including padding and word embeddings.
@@ -36,19 +36,21 @@ The model is trained on the [CoNLL-2003 dataset](https://huggingface.co/datasets
 
 ### Prerequisities
 - Python 3.8+
-- - Virtual environment (recommended)
+- Virtual environment (recommended)
 
 ### Setup
 
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+# Clone the project repository
+git clone https://github.com/haarry9/ner-bert-api.git
+# Navigate to the project folder
+cd ner-bert-api
+# Create a Python virtual environment
 python -m venv venv
-# On Linux/Mac
-source venv/bin/activate  
-# On Windows
-venv\Scripts\activate
-
+# Activate the virtual environment
+source venv/bin/activate  # On Linux/Mac
+venv\Scripts\activate     # On Windows (CMD)
+# Install dependencies
 pip install -r requirements.txt
 ```
 ## Model Folder Storage and Retrieval
@@ -59,7 +61,7 @@ Before running the API, download the model by executing:
 ```bash
 python scripts/download_model.py
 ```
-This script will download the fine-tuned model from Google Drive and store it in the appropriate directory.
+This script will download the fine-tuned model from Google Drive and stores it in the project directory.
 The project directory after running the scripts to download the model folder will be as:
 ```
   ├── model/               # Serialized model and tokenizer
