@@ -65,7 +65,7 @@ Since the size of the model files exceed 400 MB's, they are not stored in the re
 python scripts/download_model.py
 ```
 This script will download the fine-tuned model from Google Drive and stores it in the project directory.
-The project directory after running the scripts to download the model folder will be as:
+The project directory after running the above python download script will be as follows:
 ```
   ├── model/               # Serialized model and tokenizer
   ├── app/                 # FastAPI service
