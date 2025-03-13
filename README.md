@@ -4,10 +4,10 @@
 
 ## Overview
 
-The aim of the project is to implement a Named Entity Recognition (NER) API by fine-tuning a pretrained BERT model trained on the CoNLL-2003 dataset. The trained model is integrated into a FastAPI-based REST service that exposes an endpoint /predict that takes input text as JSON and returns the recognized entities. 
+The aim of the project is to implement a Named Entity Recognition (NER) API by fine-tuning a pretrained BERT model on the CoNLL-2003 dataset. The trained model is integrated into a FastAPI-based REST service that exposes an endpoint /predict which accepts an input text/sentence as JSON and returns the recognized entities. 
 
 ## Features
-- **Data Preprocessing**: Preprocessed the data in Google Colab, including tokenization, ddataset formatting, including padding and word embeddings.
+- **Data Preprocessing**: Preprocessed the data in Google Colab, including tokenization and dataset formatting, including padding and word embeddings.
 - **Model Training**: Fine-tuned the pretrained BERT model from Hugging Face on the CoNLL-2003 dataset for NER using Google Colab.
 - **Model Evaluation**: Assessed model performance using Precision, Recall, and F1-score.
 - **Model Serialization & Deployment**: The trained model and tokenizers were saved to local environment for inference.
@@ -30,7 +30,8 @@ The model is trained on the [CoNLL-2003 dataset](https://huggingface.co/datasets
 ├── README.md            # Project documentation
 └── requirements.txt     # Python dependencies
 ```
-
+> [!NOTE]  
+> Pickle and Joblib files are not standard for saving BERT-based NER models because they do not properly handle transformer architectures, optimizer states, or tokenizers. Instead, the model and tokenizer are saved using Hugging Face's save_pretrained() method and uploaded to Google Drive due to their large size (>400MB), instead of being stored in the repository.
 
 ## Installation
 
@@ -57,7 +58,9 @@ pip install -r requirements.txt
 Since the size of the model files exceed 400 MB's, they are not stored in the repository. The model folder is uploaded to Google Drive [here](https://drive.google.com/file/d/1TjtdVLCQ1So2TC6ylo6Rttyp2l_yXpvX/view?usp=drive_link). The model folder is ignored in `.gitignore`, and a python script is provided to download the model before running the API.
 
 ### Downloading the Model Folder
-Before running the API, download the model by executing:
+> [!IMPORTANT]  
+> In order to successfully run the NER API, download the model files by executing the below python script.
+
 ```bash
 python scripts/download_model.py
 ```
@@ -91,15 +94,22 @@ cd app
 uvicorn main:app --reload
 ```
 
-## Test the API endpoint:
+## Test the API in Postman:
+- Open Postman and set Request Type to `POST`.
+- Enter URL:
 ```bash
-curl -X 'POST' 'http://127.0.0.1:8000/predict' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  --data-raw '{
-    "input": "NASA and SpaceX launched the Artemis II mission, with astronauts training at Kennedy Space Center before heading to the ISS."
-  }'
+http://127.0.0.1:8000/predict
 ```
+- Go to the “Body” Tab → Select raw → Set type to JSON.
+- Enter JSON Input:
+```json
+{
+    "input": "Elon Musk founded SpaceX."
+}
+```
+- Click send and obtain the result.
+![Postman API Result](postman_api_result.png)
+
 
 ## Testing API via FastAPI's Interactive Docs
 - Open `http://127.0.0.1:8000/docs` in a browser.
