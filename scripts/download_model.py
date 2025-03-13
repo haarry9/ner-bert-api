@@ -21,10 +21,10 @@ def download_and_extract(file_id, output_dir, zip_path):
 
         # Clean up the zip file after extraction
         os.remove(zip_path)
-        print(f"✅ Model extracted successfully to '{output_dir}'.")
+        print(f" Model extracted successfully to '{output_dir}'.")
     else:
-        print(f"✅ Model folder '{output_dir}' already exists. Skipping download.")
+        print(f" Model folder '{output_dir}' already exists. Skipping download.")
 
 if __name__ == "__main__":
     download_and_extract(MODEL_ZIP_FILE_ID, MODEL_DIR, ZIP_PATH)
-    print("\n🚀 Model is ready for inference.")
+    print("\n Model is ready for inference.")

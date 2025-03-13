@@ -31,7 +31,7 @@ The model is trained on the [CoNLL-2003 dataset](https://huggingface.co/datasets
 └── requirements.txt     # Python dependencies
 ```
 > [!NOTE]  
-> Pickle and Joblib files are not standard for saving BERT-based NER models because they do not properly handle transformer architectures, optimizer states, or tokenizers. Instead, the model and tokenizer are saved using Hugging Face's save_pretrained() method and uploaded to Google Drive due to their large size (>400MB), instead of being stored in the repository.
+> Pickle and Joblib files are not standard for saving BERT-based NER models because they do not properly handle transformer architectures, optimizer states, or tokenizers. Hence, the model and tokenizer are saved using Hugging Face's save_pretrained() method and uploaded to Google Drive due to their large size (>400MB), instead of being stored in the repository.
 
 ## Installation
 

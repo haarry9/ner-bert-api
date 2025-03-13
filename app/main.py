@@ -22,7 +22,7 @@ app = FastAPI(
 
 
 # Confirmation that app has started
-print("✅ FastAPI app is running...")
+print("FastAPI app is running...")
 
 class RequestModel(BaseModel):
     input: str
