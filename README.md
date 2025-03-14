@@ -93,6 +93,9 @@ model/
 cd app
 uvicorn main:app --reload
 ```
+> [!IMPORTANT]  
+> Wait for the "FastAPI app is running..." message before proceeding to test the API (Might take a minute).
+
 
 ## Test the API in Postman:
 - Open Postman and set Request Type to `POST`.
